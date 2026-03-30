@@ -24,20 +24,21 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-secondary/30">
+    <section id="contact" className="py-20 px-4">
       <div className="max-w-5xl mx-auto space-y-10">
         <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold text-foreground">Contact</h2>
-          <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+          <h2 className="text-3xl font-bold text-foreground">
+            Cont<span className="text-primary">act</span>
+          </h2>
+          <div className="w-16 h-1 bg-primary mx-auto rounded-full glow-box" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Info */}
           <div className="space-y-5">
-            <p className="text-muted-foreground">
-              Feel free to reach out for collaborations, opportunities, or just a friendly chat!
+            <p className="text-muted-foreground text-sm">
+              Feel free to reach out for collaborations, opportunities, or a friendly chat!
             </p>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {contactInfo.map((c) => (
                 <a
                   key={c.label}
@@ -55,8 +56,7 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Form */}
-          <Card className="bg-card shadow-md">
+          <Card className="bg-card border border-primary/10 glow-border">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
@@ -64,6 +64,7 @@ const ContactSection = () => {
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
+                  className="bg-muted border-primary/10 focus:border-primary/40"
                 />
                 <Input
                   type="email"
@@ -71,6 +72,7 @@ const ContactSection = () => {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   required
+                  className="bg-muted border-primary/10 focus:border-primary/40"
                 />
                 <Textarea
                   placeholder="Your Message"
@@ -78,8 +80,9 @@ const ContactSection = () => {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   rows={4}
                   required
+                  className="bg-muted border-primary/10 focus:border-primary/40"
                 />
-                <Button type="submit" className="w-full gap-2">
+                <Button type="submit" className="w-full gap-2 glow-box">
                   <Send className="h-4 w-4" />
                   Send Message
                 </Button>
