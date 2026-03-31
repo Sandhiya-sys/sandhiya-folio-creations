@@ -3,10 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const services = [
+  { icon: Code, title: "Java Development", desc: "Robust applications with clean architecture." },
+  { icon: Brain, title: "ML Development", desc: "End-to-end machine learning solutions." },
   { icon: Palette, title: "UI/UX Design", desc: "Figma-based prototyping & user-centered design." },
   { icon: Globe, title: "Web Development", desc: "Responsive, performant modern websites." },
-  { icon: Brain, title: "ML Development", desc: "End-to-end machine learning solutions." },
-  { icon: Code, title: "Java Development", desc: "Robust applications with clean architecture." },
 ];
 
 const ServicesSection = () => (
