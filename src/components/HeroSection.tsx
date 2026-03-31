@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="space-y-4"
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium">Hello World, I'm</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary font-medium">I'm</p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight">
             <span className="text-foreground">Sandhiya</span>{" "}
             <span className="text-primary glow-text">R</span>
