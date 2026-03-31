@@ -21,7 +21,7 @@ const HeroSection = () => {
           <img
             src={profileImg}
             alt="Sandhiya R"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
         </div>
 
