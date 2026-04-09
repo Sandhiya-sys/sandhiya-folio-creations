@@ -2,11 +2,10 @@ import { Progress } from "@/components/ui/progress";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const skills = [
-  { name: "Java", level: 80 },
-  { name: "Python", level: 75 },
-  { name: "UI/UX Design (Figma)", level: 85 },
-  { name: "Web Development", level: 80 },
-  { name: "Machine Learning", level: 70 },
+  { name: "Machine Learning", level: 85 },
+  { name: "Java", level: 85 },
+  { name: "UI/UX Design (Figma)", level: 75 },
+  { name: "Web Development", level: 70 },
 ];
 
 const SkillsSection = () => (
