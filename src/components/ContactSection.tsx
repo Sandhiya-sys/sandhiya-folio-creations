@@ -10,8 +10,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 const contactInfo = [
   { icon: Phone, label: "8825950414", href: "tel:8825950414" },
   { icon: Mail, label: "sandhiyar172006@gmail.com", href: "mailto:sandhiyar172006@gmail.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/sandhiya" },
-  { icon: Github, label: "GitHub", href: "https://github.com/sandhiya" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sandhiya-r-30ba66316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+  { icon: Github, label: "GitHub", href: "https://github.com/Sandhiya-sys" },
 ];
 
 const ContactSection = () => {
