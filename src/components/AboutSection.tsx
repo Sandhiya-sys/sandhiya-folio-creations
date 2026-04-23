@@ -44,7 +44,7 @@ const AboutSection = () => (
                 <h3 className="text-lg font-semibold text-foreground">Education</h3>
               </div>
               <div className="space-y-1 text-sm">
-                <p className="font-medium text-foreground">B.Tech in AI & Data Science</p>
+                <p className="font-medium text-foreground">B.Tech in Artificial Intelligence & Data Science</p>
                 <p className="text-muted-foreground">Panimalar Engineering College</p>
                 <p className="text-primary text-xs font-medium">2023 – 2027</p>
               </div>
