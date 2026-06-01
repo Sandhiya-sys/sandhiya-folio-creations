@@ -7,6 +7,24 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ScrollReveal from "@/components/ScrollReveal";
 
+// Firebase Imports
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
+// Firebase Configuration
+const firebaseConfig = {
+ apiKey: "AIzaSyCFALrLkx2PU9vpQREDKKDC-Y2WcVXlfDA",
+  authDomain: "prototype-56635.firebaseapp.com",
+  projectId: "prototype-56635",
+  storageBucket: "prototype-56635.firebasestorage.app",
+  messagingSenderId: "1092032531987",
+  appId: "1:1092032531987:web:c25231b14673f83f5939e6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const contactInfo = [
   { icon: Phone, label: "8825950414", href: "tel:8825950414" },
   { icon: Mail, label: "sandhiyar172006@gmail.com", href: "mailto:sandhiyar172006@gmail.com" },
@@ -16,12 +34,42 @@ const contactInfo = [
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message sent!", description: "Thank you for reaching out." });
-    setForm({ name: "", email: "", message: "" });
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+        createdAt: new Date(),
+      });
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting me.",
+      });
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Firestore Error:", error);
+
+      toast({
+        title: "Error",
+        description: "Failed to send message.",
+      });
+    }
   };
 
   return (
@@ -40,12 +88,19 @@ const ContactSection = () => {
           <ScrollReveal delay={0.1} direction="left">
             <div className="space-y-5">
               <p className="text-muted-foreground text-sm">
-                Feel free to reach out for collaborations, opportunities, or a friendly chat!
+                Feel free to reach out for collaborations, opportunities, or a
+                friendly chat!
               </p>
+
               <div className="space-y-3">
                 {contactInfo.map((c) => (
-                  <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group">
+                  <a
+                    key={c.label}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                  >
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
                       <c.icon className="h-4 w-4 text-primary" />
                     </div>
@@ -60,10 +115,36 @@ const ContactSection = () => {
             <Card className="bg-card border border-primary/10 glow-border">
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <Input placeholder="Your Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="bg-muted border-primary/10 focus:border-primary/40" />
-                  <Input type="email" placeholder="Your Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="bg-muted border-primary/10 focus:border-primary/40" />
-                  <Textarea placeholder="Your Message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={4} required className="bg-muted border-primary/10 focus:border-primary/40" />
-                  <Button type="submit" className="w-full gap-2 glow-box">
+                  <Input
+                    placeholder="Your Name"
+                    value={form.name}
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value })
+                    }
+                    required
+                  />
+
+                  <Input
+                    type="email"
+                    placeholder="Your Email"
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
+                    required
+                  />
+
+                  <Textarea
+                    placeholder="Your Message"
+                    value={form.message}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
+                    rows={4}
+                    required
+                  />
+
+                  <Button type="submit" className="w-full gap-2">
                     <Send className="h-4 w-4" />
                     Send Message
                   </Button>
